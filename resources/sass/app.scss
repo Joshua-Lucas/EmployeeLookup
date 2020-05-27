@@ -1,6 +1,9 @@
 @tailwind base;
 
-
+body{
+    @apply text-6xl;
+    @apply font-thin;
+}
 h1{
     @apply text-5xl; 
     @apply font-extrabold;
@@ -31,10 +34,36 @@ h6{
     @apply font-medium;
 }
 
+p{
+    @apply text-base;
+    @apply font-normal;
+}
 
 
 
 @tailwind components;
 
-@tailwind utilities;
+.alt-h6{
+    @apply text-lg;
+    @apply font-bold;
+}
 
+.p-md{
+    @apply text-sm;
+    @apply font-normal;
+}
+
+.p-sm{
+    @apply text-xs;
+    @apply font-normal;
+}
+
+.p-xs{
+    @apply text-xxs;
+    @apply font-normal;
+}
+
+
+/* Start purging... */
+@tailwind utilities;
+/* Stop purging. */

@@ -6,9 +6,19 @@ module.exports = {
       {
         'Primary': '#002d40',
         'Secondary': '#DFA928',
-        'Tertiary' : '#5855b',
+        'Tertiary' : '#58585b',
         'Accent' : '#4e9a92'
       },
+
+      fontFamily: 
+      {
+        'Main' :  ['Montserrat', 'sans-serif']
+      },
+
+      fontSize: 
+      {
+        'xxs' : '0.625rem'
+      }
     },
   },
   variants: {},
