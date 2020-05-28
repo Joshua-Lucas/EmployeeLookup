@@ -940,7 +940,7 @@ var render = function() {
   return _c(
     "div",
     {
-      staticClass: "flex items-center shadow-lg p-4 m-2",
+      staticClass: "max-w-2xl flex items-center shadow-lg p-4 m-2",
       on: {
         click: function() {
           this$1.clicked = !_vm.clicked
@@ -1039,100 +1039,109 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _c("div", { staticClass: "flex flex-col items-center m-auto pt-12" }, [
-    _c("div", { staticClass: "flex flex-col items-center" }, [
-      _c("h1", { staticClass: "text-Accent" }, [
-        _vm._v("Search for an Employee")
-      ]),
-      _vm._v(" "),
-      _c("div", { staticClass: "w-full flex justify-center text-lg" }, [
-        _c(
-          "form",
-          {
-            staticClass: "w-full flex justify-center text-lg",
-            on: {
-              submit: function($event) {
-                $event.preventDefault()
-                return _vm.onSubmitSearch($event)
-              }
-            }
-          },
-          [
-            _c("input", {
-              directives: [
-                {
-                  name: "model",
-                  rawName: "v-model",
-                  value: _vm.search,
-                  expression: "search"
-                }
-              ],
-              staticClass:
-                "w-1/2 h-12 border-2 border-accent border-2 border-r-0",
-              attrs: { type: "text", placeholder: _vm.catagory },
-              domProps: { value: _vm.search },
+  return _c("div", { staticClass: "flex flex-col items-center" }, [
+    _vm._m(0),
+    _vm._v(" "),
+    _c(
+      "div",
+      {
+        staticClass:
+          "w-1/2 flex flex-col items-center bg-Primary bg-opacity-75 -m-24"
+      },
+      [
+        _c("h1", { staticClass: "p-4 text-Accent" }, [
+          _vm._v("Search for an Employee")
+        ]),
+        _vm._v(" "),
+        _c("div", { staticClass: "w-2/3 flex justify-center p-4 text-lg" }, [
+          _c(
+            "form",
+            {
+              staticClass: "w-full flex justify-center text-lg",
               on: {
-                input: function($event) {
-                  if ($event.target.composing) {
-                    return
-                  }
-                  _vm.search = $event.target.value
+                submit: function($event) {
+                  $event.preventDefault()
+                  return _vm.onSubmitSearch($event)
                 }
               }
-            }),
-            _vm._v(" "),
-            _c(
-              "select",
-              {
+            },
+            [
+              _c("input", {
                 directives: [
                   {
                     name: "model",
                     rawName: "v-model",
-                    value: _vm.catagory,
-                    expression: "catagory"
+                    value: _vm.search,
+                    expression: "search"
                   }
                 ],
                 staticClass:
-                  "w-1/2 h-12 border-2 border-l-0 bg-Accent opacity-25",
-                attrs: { name: "searchCatagory" },
+                  "w-1/2 h-12 border-2 border-accent border-2 border-r-0",
+                attrs: { type: "text", placeholder: _vm.catagory },
+                domProps: { value: _vm.search },
                 on: {
-                  change: function($event) {
-                    var $$selectedVal = Array.prototype.filter
-                      .call($event.target.options, function(o) {
-                        return o.selected
-                      })
-                      .map(function(o) {
-                        var val = "_value" in o ? o._value : o.value
-                        return val
-                      })
-                    _vm.catagory = $event.target.multiple
-                      ? $$selectedVal
-                      : $$selectedVal[0]
+                  input: function($event) {
+                    if ($event.target.composing) {
+                      return
+                    }
+                    _vm.search = $event.target.value
                   }
                 }
-              },
-              [
-                _c("option", { attrs: { value: "name.first" } }, [
-                  _vm._v("Name")
-                ]),
-                _vm._v(" "),
-                _c("option", { attrs: { value: "location.state" } }, [
-                  _vm._v("Location")
-                ]),
-                _vm._v(" "),
-                _c("option", { attrs: { value: "department" } }, [
-                  _vm._v("Department")
-                ])
-              ]
-            ),
-            _vm._v(" "),
-            _c("button", { attrs: { type: "w-1/2 submit" } }, [
-              _vm._v("Search")
-            ])
-          ]
-        )
-      ])
-    ]),
+              }),
+              _vm._v(" "),
+              _c(
+                "select",
+                {
+                  directives: [
+                    {
+                      name: "model",
+                      rawName: "v-model",
+                      value: _vm.catagory,
+                      expression: "catagory"
+                    }
+                  ],
+                  staticClass:
+                    "w-1/2 h-12 border-2 border-l-0 bg-Accent opacity-25",
+                  attrs: { name: "searchCatagory" },
+                  on: {
+                    change: function($event) {
+                      var $$selectedVal = Array.prototype.filter
+                        .call($event.target.options, function(o) {
+                          return o.selected
+                        })
+                        .map(function(o) {
+                          var val = "_value" in o ? o._value : o.value
+                          return val
+                        })
+                      _vm.catagory = $event.target.multiple
+                        ? $$selectedVal
+                        : $$selectedVal[0]
+                    }
+                  }
+                },
+                [
+                  _c("option", { attrs: { value: "name.first" } }, [
+                    _vm._v("Name")
+                  ]),
+                  _vm._v(" "),
+                  _c("option", { attrs: { value: "location.state" } }, [
+                    _vm._v("Location")
+                  ]),
+                  _vm._v(" "),
+                  _c("option", { attrs: { value: "department" } }, [
+                    _vm._v("Department")
+                  ])
+                ]
+              ),
+              _vm._v(" "),
+              _c("button", { attrs: { type: "w-1/2 submit" } }, [
+                _vm._v("Search")
+              ])
+            ]
+          )
+        ])
+      ]
+    ),
     _vm._v(" "),
     _vm.searched
       ? _c(
@@ -1149,7 +1158,22 @@ var render = function() {
       : _vm._e()
   ])
 }
-var staticRenderFns = []
+var staticRenderFns = [
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", {}, [
+      _c("img", {
+        staticClass: "w-full h-auto",
+        attrs: {
+          src:
+            "https://res.cloudinary.com/jlucompany/image/upload/v1590634241/EmployeeLookup/cropped_banner_wgglbp.jpg"
+        }
+      })
+    ])
+  }
+]
 render._withStripped = true
 
 
@@ -1171,31 +1195,40 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _c("div", {}, [
-    _c("p", { staticClass: "my-4" }, [
-      _vm._v("'You searcehd " + _vm._s(_vm.search) + " by " + _vm._s(_vm.type))
-    ]),
-    _vm._v(" "),
-    _c(
-      "div",
-      { staticClass: "grid lg:grid-flow-col lg:gap-4 lg:grid-flow-row" },
-      _vm._l(_vm.results, function(result) {
-        return _c("EmployeeContainerVue", {
-          key: result.id,
-          attrs: {
-            name: result.name.first + " " + result.name.last,
-            img: result.headshot.large,
-            department: result.department,
-            role: result.job_title,
-            start: result.date_started,
-            location: result.location.state,
-            phone: result.phone
-          }
-        })
-      }),
-      1
-    )
-  ])
+  return _c(
+    "div",
+    { staticClass: "flex flex-col items-center bg-white mt-32" },
+    [
+      _c("p", { staticClass: "my-4" }, [
+        _vm._v(
+          "'You searcehd " + _vm._s(_vm.search) + " by " + _vm._s(_vm.type)
+        )
+      ]),
+      _vm._v(" "),
+      _c(
+        "div",
+        {
+          staticClass:
+            "w-5/6 m-auto grid lg:grid-flow-col lg:gap-4 lg:grid-flow-row"
+        },
+        _vm._l(_vm.results, function(result) {
+          return _c("EmployeeContainerVue", {
+            key: result.id,
+            attrs: {
+              name: result.name.first + " " + result.name.last,
+              img: result.headshot.large,
+              department: result.department,
+              role: result.job_title,
+              start: result.date_started,
+              location: result.location.state,
+              phone: result.phone
+            }
+          })
+        }),
+        1
+      )
+    ]
+  )
 }
 var staticRenderFns = []
 render._withStripped = true

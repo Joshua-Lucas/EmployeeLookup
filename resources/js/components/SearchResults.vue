@@ -1,7 +1,7 @@
 <template>
-  <div class>
+  <div class="flex flex-col items-center bg-white mt-32">
     <p class="my-4">'You searcehd {{search}} by {{type}}</p>
-    <div class="grid lg:grid-flow-col lg:gap-4 lg:grid-flow-row">
+    <div class="w-5/6 m-auto grid lg:grid-flow-col lg:gap-4 lg:grid-flow-row">
       <EmployeeContainerVue
         v-for="result in results"
         :key="result.id"

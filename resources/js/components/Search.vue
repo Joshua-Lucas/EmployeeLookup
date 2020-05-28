@@ -1,14 +1,14 @@
 <template>
-  <div class="flex flex-col items-center m-auto pt-12">
-    <!-- <div class="h-64">
+  <div class="flex flex-col items-center">
+    <div class>
       <img
-        class="h-64"
-        src="https://res.cloudinary.com/jlucompany/image/upload/c_crop,g_south,h_3078,q_100,y_952/v1590601736/EmployeeLookup/dylan-gillis-KdeqA3aTnBY-unsplash_un5qg2.jpg"
+        class="w-full h-auto"
+        src="https://res.cloudinary.com/jlucompany/image/upload/v1590634241/EmployeeLookup/cropped_banner_wgglbp.jpg"
       />
-    </div>-->
-    <div class="flex flex-col items-center">
-      <h1 class="text-Accent">Search for an Employee</h1>
-      <div class="w-full flex justify-center text-lg">
+    </div>
+    <div class="w-1/2 flex flex-col items-center bg-Primary bg-opacity-75 -m-24">
+      <h1 class="p-4 text-Accent">Search for an Employee</h1>
+      <div class="w-2/3 flex justify-center p-4 text-lg">
         <form class="w-full flex justify-center text-lg" v-on:submit.prevent="onSubmitSearch">
           <input
             class="w-1/2 h-12 border-2 border-accent border-2 border-r-0"
