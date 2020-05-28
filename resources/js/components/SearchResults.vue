@@ -1,17 +1,19 @@
 <template>
   <div class>
-    <p>'You searcehd {{search}} by {{type}}</p>
-    <EmployeeContainerVue
-      v-for="result in results"
-      :key="result.id"
-      :name="result.name.first + ' ' + result.name.last"
-      :img="result.headshot.large"
-      :department="result.id"
-      :role="result.job_title"
-      :start="result.date_started"
-      :location="result.location.state"
-      :phone="result.phone"
-    />
+    <p class="my-4">'You searcehd {{search}} by {{type}}</p>
+    <div class="grid lg:grid-flow-col lg:gap-4 lg:grid-flow-row">
+      <EmployeeContainerVue
+        v-for="result in results"
+        :key="result.id"
+        :name="result.name.first + ' ' + result.name.last"
+        :img="result.headshot.large"
+        :department="result.department"
+        :role="result.job_title"
+        :start="result.date_started"
+        :location="result.location.state"
+        :phone="result.phone"
+      />
+    </div>
   </div>
 </template>
 
@@ -91,6 +93,91 @@ export default {
             },
             {
               id: "Employer Branding"
+            }
+          ],
+          manager_id: 1,
+          is_manager: true
+        },
+        {
+          id: 3,
+          name: {
+            title: "Mrs",
+            first: "Irene",
+            last: "Lucas"
+          },
+          location: {
+            street: "1601 Daisy Dr",
+            city: "Bakersfield",
+            state: "Oregon",
+            postcode: 59692,
+            coordinates: {
+              latitude: "35.373291",
+              longitude: "-119.018715"
+            },
+            timezone: {
+              offset: "-7:00",
+              description: "Pacific Daylight Time"
+            }
+          },
+          phone: "(850)-893-0168",
+          headshot: {
+            large: "https://randomuser.me/api/portraits/women/3.jpg",
+            medium: "https://randomuser.me/api/portraits/med/women/3.jpg",
+            thumbnail: "https://randomuser.me/api/portraits/thumb/women/3.jpg"
+          },
+          department: "Executive",
+          job_title: "Chief Financial Officer",
+          date_started: "8/25/2014",
+          skills: [
+            {
+              id: "Key Account Relationship Building"
+            },
+            {
+              id: "ABAP-OO"
+            }
+          ],
+          manager_id: 1,
+          is_manager: true
+        },
+        {
+          id: 4,
+          name: {
+            title: "Ms",
+            first: "Monica",
+            last: "Green"
+          },
+          location: {
+            street: "6954 Fincher Rd",
+            city: "Abilene",
+            state: "Maine",
+            postcode: 69242,
+            coordinates: {
+              latitude: "32.448734",
+              longitude: "-99.733147"
+            },
+            timezone: {
+              offset: "-4:00",
+              description: "Eastern Daylight Time"
+            }
+          },
+          phone: "(976)-971-5430",
+          headshot: {
+            large: "https://randomuser.me/api/portraits/women/36.jpg",
+            medium: "https://randomuser.me/api/portraits/med/women/36.jpg",
+            thumbnail: "https://randomuser.me/api/portraits/thumb/women/36.jpg"
+          },
+          department: "Executive",
+          job_title: "Chief Operations Officer",
+          date_started: "9/16/2009",
+          skills: [
+            {
+              id: "Ksh"
+            },
+            {
+              id: "Knee"
+            },
+            {
+              id: "EWP"
             }
           ],
           manager_id: 1,
