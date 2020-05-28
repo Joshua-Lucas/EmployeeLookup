@@ -1,5 +1,5 @@
 <template>
-  <div class="flex items-center shadow-lg p-4 m-2" @click="()=>{this.clicked =!clicked}">
+  <div class="max-w-2xl flex items-center shadow-lg p-4 m-2" @click="()=>{this.clicked =!clicked}">
     <div>
       <img class="rounded-full" :src="img" alt="headshot" />
     </div>
