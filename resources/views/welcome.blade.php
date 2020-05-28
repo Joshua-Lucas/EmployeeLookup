@@ -16,7 +16,7 @@
 </head>
 
 <body class="font-Main">
-    <div id="app">
+    <div id="app" class=" flex flex-col items-center ">
         <router-view></router-view>
     </div>
     <script src="/js/app.js"></script>

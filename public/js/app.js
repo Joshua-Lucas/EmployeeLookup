@@ -108,9 +108,22 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   props: ["name", "img", "department", "role", "start", "location", "phone"],
-  methods: {}
+  data: function data() {
+    return {
+      clicked: false
+    };
+  },
+  methods: {// toggleDetails() {
+    //   this.clicked =
+    // }
+  }
 });
 
 /***/ }),
@@ -245,6 +258,8 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   components: {
@@ -315,6 +330,82 @@ __webpack_require__.r(__webpack_exports__);
           id: "FGD"
         }, {
           id: "Employer Branding"
+        }],
+        manager_id: 1,
+        is_manager: true
+      }, {
+        id: 3,
+        name: {
+          title: "Mrs",
+          first: "Irene",
+          last: "Lucas"
+        },
+        location: {
+          street: "1601 Daisy Dr",
+          city: "Bakersfield",
+          state: "Oregon",
+          postcode: 59692,
+          coordinates: {
+            latitude: "35.373291",
+            longitude: "-119.018715"
+          },
+          timezone: {
+            offset: "-7:00",
+            description: "Pacific Daylight Time"
+          }
+        },
+        phone: "(850)-893-0168",
+        headshot: {
+          large: "https://randomuser.me/api/portraits/women/3.jpg",
+          medium: "https://randomuser.me/api/portraits/med/women/3.jpg",
+          thumbnail: "https://randomuser.me/api/portraits/thumb/women/3.jpg"
+        },
+        department: "Executive",
+        job_title: "Chief Financial Officer",
+        date_started: "8/25/2014",
+        skills: [{
+          id: "Key Account Relationship Building"
+        }, {
+          id: "ABAP-OO"
+        }],
+        manager_id: 1,
+        is_manager: true
+      }, {
+        id: 4,
+        name: {
+          title: "Ms",
+          first: "Monica",
+          last: "Green"
+        },
+        location: {
+          street: "6954 Fincher Rd",
+          city: "Abilene",
+          state: "Maine",
+          postcode: 69242,
+          coordinates: {
+            latitude: "32.448734",
+            longitude: "-99.733147"
+          },
+          timezone: {
+            offset: "-4:00",
+            description: "Eastern Daylight Time"
+          }
+        },
+        phone: "(976)-971-5430",
+        headshot: {
+          large: "https://randomuser.me/api/portraits/women/36.jpg",
+          medium: "https://randomuser.me/api/portraits/med/women/36.jpg",
+          thumbnail: "https://randomuser.me/api/portraits/thumb/women/36.jpg"
+        },
+        department: "Executive",
+        job_title: "Chief Operations Officer",
+        date_started: "9/16/2009",
+        skills: [{
+          id: "Ksh"
+        }, {
+          id: "Knee"
+        }, {
+          id: "EWP"
         }],
         manager_id: 1,
         is_manager: true
@@ -842,25 +933,58 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "render", function() { return render; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return staticRenderFns; });
 var render = function() {
+  var this$1 = this
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _c("div", { staticClass: "flex items-center shadow-lg p-4 m-2" }, [
-    _c("div", [
-      _c("img", {
-        staticClass: "rounded-full",
-        attrs: { src: _vm.img, alt: "headshot" }
-      })
-    ]),
-    _vm._v(" "),
-    _c("div", { staticClass: "pl-2" }, [
-      _c("h3", [_vm._v(_vm._s(_vm.name))]),
+  return _c(
+    "div",
+    {
+      staticClass: "flex items-center shadow-lg p-4 m-2",
+      on: {
+        click: function() {
+          this$1.clicked = !_vm.clicked
+        }
+      }
+    },
+    [
+      _c("div", [
+        _c("img", {
+          staticClass: "rounded-full",
+          attrs: { src: _vm.img, alt: "headshot" }
+        })
+      ]),
       _vm._v(" "),
-      _c("p", [_vm._v(_vm._s(_vm.role))]),
-      _vm._v(" "),
-      _c("p", [_vm._v(_vm._s(_vm.phone))])
-    ])
-  ])
+      _c("div", { staticClass: "pl-2" }, [
+        _c("h3", [_vm._v(_vm._s(_vm.name))]),
+        _vm._v(" "),
+        _c("p", [_vm._v(_vm._s(_vm.role))]),
+        _vm._v(" "),
+        _c("p", [_vm._v(_vm._s(_vm.phone))]),
+        _vm._v(" "),
+        _c(
+          "div",
+          {
+            directives: [
+              {
+                name: "show",
+                rawName: "v-show",
+                value: _vm.clicked,
+                expression: "clicked"
+              }
+            ]
+          },
+          [
+            _c("p", [_vm._v(_vm._s(_vm.department))]),
+            _vm._v(" "),
+            _c("p", [_vm._v(_vm._s(_vm.location))]),
+            _vm._v(" "),
+            _c("p", [_vm._v("Start Date:" + _vm._s(_vm.start))])
+          ]
+        )
+      ])
+    ]
+  )
 }
 var staticRenderFns = []
 render._withStripped = true
@@ -1013,6 +1137,7 @@ var render = function() {
     _vm.searched
       ? _c(
           "div",
+          { staticClass: "w-full" },
           _vm._l(_vm.searchInput, function(input) {
             return _c("SearchResults", {
               key: input.id,
@@ -1046,33 +1171,31 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _c(
-    "div",
-    {},
-    [
-      _c("p", [
-        _vm._v(
-          "'You searcehd " + _vm._s(_vm.search) + " by " + _vm._s(_vm.type)
-        )
-      ]),
-      _vm._v(" "),
+  return _c("div", {}, [
+    _c("p", { staticClass: "my-4" }, [
+      _vm._v("'You searcehd " + _vm._s(_vm.search) + " by " + _vm._s(_vm.type))
+    ]),
+    _vm._v(" "),
+    _c(
+      "div",
+      { staticClass: "grid lg:grid-flow-col lg:gap-4 lg:grid-flow-row" },
       _vm._l(_vm.results, function(result) {
         return _c("EmployeeContainerVue", {
           key: result.id,
           attrs: {
             name: result.name.first + " " + result.name.last,
             img: result.headshot.large,
-            department: result.id,
+            department: result.department,
             role: result.job_title,
             start: result.date_started,
             location: result.location.state,
             phone: result.phone
           }
         })
-      })
-    ],
-    2
-  )
+      }),
+      1
+    )
+  ])
 }
 var staticRenderFns = []
 render._withStripped = true

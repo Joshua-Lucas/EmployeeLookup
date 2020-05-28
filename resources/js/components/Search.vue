@@ -30,7 +30,7 @@
         </form>
       </div>
     </div>
-    <div v-if="searched">
+    <div class="w-full" v-if="searched">
       <SearchResults
         v-for="input in searchInput"
         v-bind:key="input.id "
