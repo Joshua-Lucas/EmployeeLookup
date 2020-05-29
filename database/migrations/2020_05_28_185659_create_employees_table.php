@@ -16,8 +16,8 @@ class CreateEmployeesTable extends Migration
         Schema::create('employees', function (Blueprint $table) {
             $table->id();
             $table->string('title');
-            $table->string('firstName');
-            $table->string('lastName');
+            $table->string('firstname');
+            $table->string('lastname');
             $table->text('street');
             $table->text('city');
             $table->text('state');
@@ -30,6 +30,7 @@ class CreateEmployeesTable extends Migration
             $table->longText('large_headshot');
             $table->longText('medium_headshot');
             $table->longText('thumbnail_headshot');
+            $table->longText('email')->nullable();
             $table->string('department');
             $table->string('job_title');
             $table->date('date_started');

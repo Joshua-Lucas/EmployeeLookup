@@ -1926,16 +1926,37 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
-  props: ["name", "img", "department", "role", "start", "location", "phone"],
+  props: ["name", "img", "email", "department", "role", "start", "location", "phone"],
   data: function data() {
     return {
       clicked: false
     };
   },
-  methods: {// toggleDetails() {
-    //   this.clicked =
-    // }
+  computed: {
+    tenure: function tenure() {
+      var startYear = parseInt(this.start.substring(0, 4));
+      var year = this.getCurrentYear();
+      return year - startYear;
+    }
+  },
+  methods: {
+    getCurrentYear: function getCurrentYear() {
+      var mil = Date.now();
+      var sec = mil / 1000;
+      var min = sec / 60;
+      var hour = min / 60;
+      var day = hour / 24;
+      var year = day / 365;
+      var currentYear = Math.round(1970 + year);
+      return currentYear;
+    }
   }
 });
 
@@ -2062,6 +2083,27 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   components: {
@@ -2094,8 +2136,7 @@ __webpack_require__.r(__webpack_exports__);
       this.searchInput.push(search);
       this.searched = true;
       this.searchId += 1;
-      this.search = "";
-      this.$router.push("/results/" + id);
+      this.search = ""; // this.$router.push("/results/" + id);
     }
   }
 });
@@ -2113,6 +2154,9 @@ __webpack_require__.r(__webpack_exports__);
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _EmployeeContainer_vue__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./EmployeeContainer.vue */ "./resources/js/components/EmployeeContainer.vue");
 /* harmony import */ var _NoResultFound_vue__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./NoResultFound.vue */ "./resources/js/components/NoResultFound.vue");
+//
+//
+//
 //
 //
 //
@@ -2160,7 +2204,7 @@ var axios = __webpack_require__(/*! axios */ "./node_modules/axios/index.js");
   mounted: function mounted() {
     var _this = this;
 
-    axios.get('http://employeesearch.test/api/employees').then(function (response) {
+    axios.get("http://employeesearch.test/api/employees").then(function (response) {
       return _this.results = response.data;
     });
   },
@@ -2177,7 +2221,7 @@ var axios = __webpack_require__(/*! axios */ "./node_modules/axios/index.js");
     filteredByName: function filteredByName() {
       var input = this.search;
       var arry = this.results.filter(function (el) {
-        return el.firstName.includes(input);
+        return el.firstname.includes(input) || el.lastname.includes(input) || el.firstname.toLowerCase().includes(input) || el.lastname.toLowerCase().includes(input);
       });
       this.results = arry;
       return console.log(arry);
@@ -2185,7 +2229,7 @@ var axios = __webpack_require__(/*! axios */ "./node_modules/axios/index.js");
     filteredByLocation: function filteredByLocation() {
       var input = this.search;
       var arry = this.results.filter(function (el) {
-        return el.state.includes(input);
+        return el.state.includes(input) || el.state.toLowerCase().includes(input);
       });
       this.results = arry;
       return console.log(arry);
@@ -2193,7 +2237,7 @@ var axios = __webpack_require__(/*! axios */ "./node_modules/axios/index.js");
     filteredByDepartment: function filteredByDepartment() {
       var input = this.search;
       var arry = this.results.filter(function (el) {
-        return el.department.includes(input);
+        return el.department.includes(input) || el.department.toLowerCase().includes(input);
       });
       this.results = arry;
       return console.log(arry);
@@ -2690,7 +2734,8 @@ var render = function() {
   return _c(
     "div",
     {
-      staticClass: "max-w-2xl flex items-center shadow-lg p-4 m-2",
+      staticClass:
+        "w-full mb-10 p-4 flex flex-col items-center shadow-lg rounded-md border-2 border-Accent lg:flex-row",
       on: {
         click: function() {
           this$1.clicked = !_vm.clicked
@@ -2705,34 +2750,51 @@ var render = function() {
         })
       ]),
       _vm._v(" "),
-      _c("div", { staticClass: "pl-2" }, [
-        _c("h3", [_vm._v(_vm._s(_vm.name))]),
-        _vm._v(" "),
-        _c("p", [_vm._v(_vm._s(_vm.role))]),
-        _vm._v(" "),
-        _c("p", [_vm._v(_vm._s(_vm.phone))]),
-        _vm._v(" "),
-        _c(
-          "div",
-          {
-            directives: [
-              {
-                name: "show",
-                rawName: "v-show",
-                value: _vm.clicked,
-                expression: "clicked"
-              }
+      _c(
+        "div",
+        { staticClass: "lg:pl-2 text-Primary text-center lg:text-left" },
+        [
+          _c("h3", {}, [_vm._v(_vm._s(_vm.name))]),
+          _vm._v(" "),
+          _c("div", { staticClass: "lg:p-1 text-Accent" }, [
+            _c("p", [_vm._v(_vm._s(_vm.role))]),
+            _vm._v(" "),
+            _c("p", [_vm._v(_vm._s(_vm.department))])
+          ]),
+          _vm._v(" "),
+          _c(
+            "div",
+            {
+              directives: [
+                {
+                  name: "show",
+                  rawName: "v-show",
+                  value: _vm.clicked,
+                  expression: "clicked"
+                }
+              ],
+              staticClass: "mt-2 text-Tertiary fade-in"
+            },
+            [
+              _c("p", { staticClass: "font-thin" }, [
+                _vm._v(_vm._s(_vm.location))
+              ]),
+              _vm._v(" "),
+              _c("p", { staticClass: "font-thin" }, [
+                _vm._v("Team member for " + _vm._s(_vm.tenure) + " years")
+              ]),
+              _vm._v(" "),
+              _vm.email !== null
+                ? _c("p", { staticClass: "font-thin" }, [
+                    _vm._v(_vm._s(_vm.email))
+                  ])
+                : _vm._e(),
+              _vm._v(" "),
+              _c("p", { staticClass: "font-thin" }, [_vm._v(_vm._s(_vm.phone))])
             ]
-          },
-          [
-            _c("p", [_vm._v(_vm._s(_vm.department))]),
-            _vm._v(" "),
-            _c("p", [_vm._v(_vm._s(_vm.location))]),
-            _vm._v(" "),
-            _c("p", [_vm._v("Start Date:" + _vm._s(_vm.start))])
-          ]
-        )
-      ])
+          )
+        ]
+      )
     ]
   )
 }
@@ -2765,7 +2827,11 @@ var staticRenderFns = [
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
-    return _c("div", [_c("h1", [_vm._v("No result for that search")])])
+    return _c("div", { staticClass: "w-full mb-8" }, [
+      _c("h1", { staticClass: "flex pt-4 w-full" }, [
+        _vm._v("Sorry No Result Found")
+      ])
+    ])
   }
 ]
 render._withStripped = true
@@ -2844,121 +2910,177 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _c("div", { staticClass: "flex flex-col items-center" }, [
+  return _c("div", { staticClass: "flex flex-col items-center fade-in-up" }, [
     _vm._m(0),
     _vm._v(" "),
     _c(
       "div",
       {
-        staticClass:
-          "relative w-1/2 z-10 flex flex-col items-center bg-Primary bg-opacity-75 -m-24"
+        class: {
+          "w-full flex flex-col items-center": !_vm.searched,
+          "w-full flex flex-col items-center large-fade-in": _vm.searched
+        }
       },
       [
-        _c("h1", { staticClass: "p-4 text-Accent" }, [
-          _vm._v("Search for an Employee")
-        ]),
-        _vm._v(" "),
-        _c("div", { staticClass: "w-2/3 flex justify-center p-4 text-lg" }, [
-          _c(
-            "form",
-            {
-              staticClass: "w-full flex justify-center text-lg",
-              attrs: { action: "/results" },
-              on: {
-                submit: function($event) {
-                  $event.preventDefault()
-                  return _vm.onSubmitSearch($event)
-                }
-              }
-            },
-            [
-              _c("input", {
-                directives: [
-                  {
-                    name: "model",
-                    rawName: "v-model.lazy",
-                    value: _vm.search,
-                    expression: "search",
-                    modifiers: { lazy: true }
-                  }
-                ],
-                staticClass:
-                  "w-1/2 h-12 border-2 border-accent border-2 border-r-0",
-                attrs: { type: "text", placeholder: _vm.catagory },
-                domProps: { value: _vm.search },
-                on: {
-                  change: function($event) {
-                    _vm.search = $event.target.value
-                  }
-                }
-              }),
-              _vm._v(" "),
-              _c(
-                "select",
-                {
-                  directives: [
-                    {
-                      name: "model",
-                      rawName: "v-model.lazy",
-                      value: _vm.catagory,
-                      expression: "catagory",
-                      modifiers: { lazy: true }
-                    }
-                  ],
-                  staticClass:
-                    "w-1/2 h-12 border-2 border-l-0 bg-Accent opacity-25",
-                  attrs: { name: "searchCatagory" },
-                  on: {
-                    change: function($event) {
-                      var $$selectedVal = Array.prototype.filter
-                        .call($event.target.options, function(o) {
-                          return o.selected
-                        })
-                        .map(function(o) {
-                          var val = "_value" in o ? o._value : o.value
-                          return val
-                        })
-                      _vm.catagory = $event.target.multiple
-                        ? $$selectedVal
-                        : $$selectedVal[0]
-                    }
-                  }
-                },
-                [
-                  _c("option", { attrs: { value: "name" } }, [_vm._v("Name")]),
-                  _vm._v(" "),
-                  _c("option", { attrs: { value: "state" } }, [
-                    _vm._v("Location")
-                  ]),
-                  _vm._v(" "),
-                  _c("option", { attrs: { value: "department" } }, [
-                    _vm._v("Department")
-                  ])
-                ]
-              ),
-              _vm._v(" "),
-              _c("button", { attrs: { type: "w-1/2 submit" } }, [
-                _vm._v("Search")
-              ])
-            ]
-          )
-        ])
-      ]
-    ),
-    _vm._v(" "),
-    _vm.searched
-      ? _c(
+        _c(
           "div",
-          { staticClass: "w-full", attrs: { id: "searchResults" } },
-          _vm._l(_vm.searchInput, function(input) {
-            return _c("SearchResults", {
-              key: input.id,
-              attrs: { search: input.search, type: input.type }
-            })
-          }),
-          1
-        )
-      : _vm._e()
+          {
+            staticClass:
+              "relative w-full -mt-8 pb-20 z-30 flex flex-col items-center rounded-sm bg-Primary bg-opacity-75 lg:-mt-24 lg:w-3/4"
+          },
+          [
+            _c("h1", { staticClass: "p-4 text-center text-Accent" }, [
+              _vm._v("Search for an Employee")
+            ]),
+            _vm._v(" "),
+            _c(
+              "div",
+              {
+                staticClass:
+                  "w-full flex justify-center text-lg text-Primary lg:h-10 lg:mt-10"
+              },
+              [
+                _c(
+                  "form",
+                  {
+                    staticClass:
+                      "w-full h-16 pr-2 bg-white border-2 boarder-gray-200 flex justify-center flex-wrap text-base lg:w-4/6 lg:flex-no-wrap xl:w-1/2",
+                    attrs: { action: "/results" },
+                    on: {
+                      submit: function($event) {
+                        $event.preventDefault()
+                        return _vm.onSubmitSearch($event)
+                      }
+                    }
+                  },
+                  [
+                    _c("input", {
+                      directives: [
+                        {
+                          name: "model",
+                          rawName: "v-model.lazy",
+                          value: _vm.search,
+                          expression: "search",
+                          modifiers: { lazy: true }
+                        }
+                      ],
+                      staticClass: "w-4/6 h-full text-center lg:w-5/6",
+                      attrs: {
+                        type: "text",
+                        placeholder: "Search by " + _vm.catagory
+                      },
+                      domProps: { value: _vm.search },
+                      on: {
+                        change: function($event) {
+                          _vm.search = $event.target.value
+                        }
+                      }
+                    }),
+                    _vm._v(" "),
+                    _c(
+                      "select",
+                      {
+                        directives: [
+                          {
+                            name: "model",
+                            rawName: "v-model.lazy",
+                            value: _vm.catagory,
+                            expression: "catagory",
+                            modifiers: { lazy: true }
+                          }
+                        ],
+                        staticClass:
+                          "w-2/6 h-12 my-2 self-center rounded-md bg-Accent opacity-25 text-center appearance-none lg:w-3/12 lg:mr-1",
+                        attrs: { name: "searchCatagory" },
+                        on: {
+                          change: function($event) {
+                            var $$selectedVal = Array.prototype.filter
+                              .call($event.target.options, function(o) {
+                                return o.selected
+                              })
+                              .map(function(o) {
+                                var val = "_value" in o ? o._value : o.value
+                                return val
+                              })
+                            _vm.catagory = $event.target.multiple
+                              ? $$selectedVal
+                              : $$selectedVal[0]
+                          }
+                        }
+                      },
+                      [
+                        _c(
+                          "option",
+                          { attrs: { value: "name", selected: "" } },
+                          [_vm._v("Name")]
+                        ),
+                        _vm._v(" "),
+                        _c("option", { attrs: { value: "state" } }, [
+                          _vm._v("Location")
+                        ]),
+                        _vm._v(" "),
+                        _c("option", { attrs: { value: "department" } }, [
+                          _vm._v("Department")
+                        ])
+                      ]
+                    ),
+                    _vm._v(" "),
+                    _c(
+                      "button",
+                      {
+                        staticClass:
+                          "w-2/3 flex justify-center bg-Accent text-white round p-2 mt-4 shadow-lg hover:bg-white hover:text-Accent lg:bg-white lg:w-auto lg:m-0 lg:shadow-none lg:text-Accent lg:self-center lg:p-0 lg:pl-1 lg:opacity-75",
+                        attrs: { type: "submit" }
+                      },
+                      [
+                        _c(
+                          "svg",
+                          {
+                            staticClass: "fill-current lg:hover:text-Primary",
+                            attrs: {
+                              xmlns: "http://www.w3.org/2000/svg",
+                              viewBox: "0 0 24 24",
+                              width: "24",
+                              height: "24"
+                            }
+                          },
+                          [
+                            _c("path", {
+                              attrs: {
+                                d:
+                                  "M16.32 14.9l5.39 5.4a1 1 0 0 1-1.42 1.4l-5.38-5.38a8 8 0 1 1 1.41-1.41zM10 16a6 6 0 1 0 0-12 6 6 0 0 0 0 12z"
+                              }
+                            })
+                          ]
+                        ),
+                        _vm._v(" "),
+                        _c("span", { staticClass: "lg:hidden lg:pl-1" }, [
+                          _vm._v("Search")
+                        ])
+                      ]
+                    )
+                  ]
+                )
+              ]
+            )
+          ]
+        ),
+        _vm._v(" "),
+        _vm.searched
+          ? _c(
+              "div",
+              { staticClass: "w-full", attrs: { id: "searchResults" } },
+              _vm._l(_vm.searchInput, function(input) {
+                return _c("SearchResults", {
+                  key: input.id,
+                  attrs: { search: input.search, type: input.type }
+                })
+              }),
+              1
+            )
+          : _vm._e()
+      ]
+    )
   ])
 }
 var staticRenderFns = [
@@ -3000,27 +3122,26 @@ var render = function() {
   var _c = _vm._self._c || _h
   return _c(
     "div",
-    { staticClass: "flex flex-col items-center bg-white mt-32" },
+    { staticClass: "flex flex-col items-center bg-white -mt-8 pt-16" },
     [
-      _c("p", { staticClass: "my-4" }, [
-        _vm._v(
-          "'You searcehd " + _vm._s(_vm.search) + " by " + _vm._s(_vm.type)
-        )
+      _c("h6", { staticClass: "my-2 pb-2" }, [
+        _vm._v("You searcehd " + _vm._s(_vm.search) + " by " + _vm._s(_vm.type))
       ]),
       _vm._v(" "),
       _c(
         "div",
         {
           staticClass:
-            "w-5/6 m-auto grid lg:grid-flow-col lg:gap-4 lg:grid-flow-row"
+            "fade-in w-11/12 mx-1 md:w-5/6 m-auto grid md:grid-cols-2 md:gap-4 md:grid-flow-row lg:grid-cols-3"
         },
         [
           _vm._l(_vm.results, function(result) {
             return _c("EmployeeContainerVue", {
               key: result.id,
               attrs: {
-                name: result.firstName + " " + result.lastName,
+                name: result.firstname + " " + result.lastname,
                 img: result.large_headshot,
+                email: result.email,
                 department: result.department,
                 role: result.job_title,
                 start: result.date_started,
