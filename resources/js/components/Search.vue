@@ -17,13 +17,13 @@
           <input
             class="w-1/2 h-12 border-2 border-accent border-2 border-r-0"
             type="text"
-            v-model="search"
+            v-model.lazy="search"
             v-bind:placeholder="catagory"
           />
           <select
             class="w-1/2 h-12 border-2 border-l-0 bg-Accent opacity-25"
             name="searchCatagory"
-            v-model="catagory"
+            v-model.lazy="catagory"
           >
             <option value="name">Name</option>
             <option value="state">Location</option>
