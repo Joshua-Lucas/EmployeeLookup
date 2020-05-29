@@ -6,10 +6,14 @@
         src="https://res.cloudinary.com/jlucompany/image/upload/v1590634241/EmployeeLookup/cropped_banner_wgglbp.jpg"
       />
     </div>
-    <div class="w-1/2 flex flex-col items-center bg-Primary bg-opacity-75 -m-24">
+    <div class="relative w-1/2 z-10 flex flex-col items-center bg-Primary bg-opacity-75 -m-24">
       <h1 class="p-4 text-Accent">Search for an Employee</h1>
       <div class="w-2/3 flex justify-center p-4 text-lg">
-        <form class="w-full flex justify-center text-lg" v-on:submit.prevent="onSubmitSearch">
+        <form
+          class="w-full flex justify-center text-lg"
+          v-on:submit.prevent="onSubmitSearch"
+          action="/results"
+        >
           <input
             class="w-1/2 h-12 border-2 border-accent border-2 border-r-0"
             type="text"
@@ -21,8 +25,8 @@
             name="searchCatagory"
             v-model="catagory"
           >
-            <option value="name.first">Name</option>
-            <option value="location.state">Location</option>
+            <option value="name">Name</option>
+            <option value="state">Location</option>
             <option value="department">Department</option>
           </select>
 
@@ -30,8 +34,9 @@
         </form>
       </div>
     </div>
-    <div class="w-full" v-if="searched">
-      <SearchResults
+    <div id='searchResults' class="w-full" v-if="searched">
+      <SearchResults 
+        
         v-for="input in searchInput"
         v-bind:key="input.id "
         v-bind:search="input.search"
@@ -51,7 +56,7 @@ export default {
 
   data() {
     return {
-      searchId: 1,
+      searchId: 0,
       search: "",
       catagory: "",
       searched: false,
@@ -59,10 +64,21 @@ export default {
     };
   },
 
+beforeUpdate() { 
+  
+  if( document.getElementById("searchResults") !== null)
+  {
+    let searchResults = document.getElementById("searchResults");
+    let oldSearch =  searchResults.childNodes[0]
+    return searchResults.removeChild(oldSearch)
+  }
+},
+
   methods: {
     onSubmitSearch() {
+      let id = this.searchId;
       let search = {
-        id: this.searchId,
+        id,
         search: this.search,
         type: this.catagory
       };
@@ -70,6 +86,7 @@ export default {
       this.searched = true;
       this.searchId += 1;
       this.search = "";
+      this.$router.push("/results/" + id);
     }
   }
 };
