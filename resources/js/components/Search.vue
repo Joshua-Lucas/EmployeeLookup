@@ -26,7 +26,7 @@
               v-bind:placeholder="'Search by ' + catagory "
             />
             <select
-              class="w-2/6 h-12 my-2 self-center rounded-md bg-Accent opacity-25 text-center appearance-none lg:w-3/12 lg:mr-1"
+              class="w-2/6 h-12 my-2 self-center rounded-md bg-Accent opacity-25 text-center lg:w-3/12 lg:mr-1"
               name="searchCatagory"
               v-model.lazy="catagory"
             >
