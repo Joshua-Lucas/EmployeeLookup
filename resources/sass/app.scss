@@ -48,19 +48,82 @@ p{
     @apply font-bold;
 }
 
-.p-md{
+.p-med{
     @apply text-sm;
     @apply font-normal;
 }
 
-.p-sm{
+.p-small{
     @apply text-xs;
     @apply font-normal;
 }
 
-.p-xs{
+.p-xsmall{
     @apply text-xxs;
     @apply font-normal;
+}
+
+@keyframes fade-in{
+    0% {opacity: 0;}
+    100% {opacity: 1}
+}
+
+@keyframes fade-out{
+    0% {opacity: 1;}
+    100% {opacity: 0}
+}
+
+@keyframes trans-up-small {
+    0% {transform: translateY(20%)}
+    100% {transform: translateY(0)}
+}
+
+@keyframes trans-up-big {
+    0% {transform: translateY(40%)}
+    100% {transform: translateY(0)}
+}
+
+@keyframes trans-in {
+    0% {transform: translateX(-0%)}
+    100% {transform: translateX(0)}
+}
+
+.trans-up-2{
+    animation: trans-up 2s;
+
+}
+.fade-in-up{
+   animation: fade-in 2s , trans-up-small 1s;
+}
+
+.fade-in-up-big-3{
+    animation: fade-in 3s , trans-up-big 2s;
+ }
+
+.fade-out-right{
+    animation: fade-out 2, trans-out 1s;
+}
+// fade ins
+.fade-in {
+    animation: fade-in 2s;
+}
+
+.fade-in-5{
+    animation: fade-in 5s;
+}
+//fade outs
+.fade-out-2{
+    animation: fade-out 4s;
+
+}
+
+@screen lg {
+    .large-fade-in
+    {
+        @apply .fade-out-2;
+        @apply -m-72;
+        @apply .fade-in-up-big-3;
+    }
 }
 
 

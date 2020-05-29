@@ -6,7 +6,10 @@ module.exports = {
       {
         '1/2': '50%'
       },
-      
+      margin:
+      {
+        '-72' : '-18rem'
+      },
       colors:
       {
         'Primary': '#002d40',
@@ -23,7 +26,14 @@ module.exports = {
       fontSize: 
       {
         'xxs' : '0.625rem'
+      },
+      insert: 
+      {
+        '1/4' : '25%',
+        '1/2' : '50%'
+        
       }
+      
     },
   },
   variants: {},
