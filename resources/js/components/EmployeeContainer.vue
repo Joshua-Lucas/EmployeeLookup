@@ -24,16 +24,16 @@
 
 <script>
 export default {
-  props: [
-    "name",
-    "img",
-    "email",
-    "department",
-    "role",
-    "start",
-    "location",
-    "phone"
-  ],
+  props: {
+    name: String,
+    img: String,
+    email: String,
+    department: String,
+    role: String,
+    start: String,
+    location: String,
+    phone: String
+  },
 
   data() {
     return {

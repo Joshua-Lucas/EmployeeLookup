@@ -105,7 +105,6 @@ export default {
       this.searched = true;
       this.searchId += 1;
       this.search = "";
-      // this.$router.push("/results/" + id);
     }
   }
 };

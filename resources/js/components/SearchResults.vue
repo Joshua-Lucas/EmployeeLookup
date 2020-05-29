@@ -32,7 +32,7 @@ export default {
     NoResult
   },
 
-  props: ["search", "type"],
+  props: { search: String, type: String },
 
   data() {
     return {
@@ -77,7 +77,6 @@ export default {
       });
 
       this.results = arry;
-      return console.log(arry);
     },
 
     filteredByLocation() {
@@ -89,7 +88,6 @@ export default {
       });
 
       this.results = arry;
-      return console.log(arry);
     },
 
     filteredByDepartment() {
@@ -102,7 +100,6 @@ export default {
       });
 
       this.results = arry;
-      return console.log(arry);
     }
   }
 };
