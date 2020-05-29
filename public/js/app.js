@@ -2204,7 +2204,7 @@ var axios = __webpack_require__(/*! axios */ "./node_modules/axios/index.js");
   mounted: function mounted() {
     var _this = this;
 
-    axios.get("http://employeesearch.test/api/employees").then(function (response) {
+    axios.get("https://employeelookup.herokuapp.com/api/employees").then(function (response) {
       return _this.results = response.data;
     });
   },
