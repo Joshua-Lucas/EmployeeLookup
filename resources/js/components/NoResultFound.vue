@@ -1,11 +1,9 @@
 <template>
-  <div>
-      <h1>No result for that search</h1>
+  <div class="w-full mb-8">
+    <h1 class="flex pt-4 w-full">Sorry No Result Found</h1>
   </div>
 </template>
 
 <script>
-export default {
-
-}
+export default {};
 </script>
