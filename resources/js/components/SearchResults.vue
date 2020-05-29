@@ -50,7 +50,7 @@ export default {
   },
   mounted() {
     axios
-      .get("http://employeesearch.test/api/employees")
+      .get("https://employeelookup.herokuapp.com/api/employees")
       .then(response => (this.results = response.data));
   },
 
