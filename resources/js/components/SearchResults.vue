@@ -13,26 +13,37 @@
         :location="result.state"
         :phone="result.phone"
       />
+      <no-result v-if="emptyArray" />
     </div>
   </div>
 </template>
 
 <script>
 import EmployeeContainerVue from "./EmployeeContainer.vue";
+import NoResult from "./NoResultFound.vue";
 const axios = require('axios');
 export default {
   components: {
-    EmployeeContainerVue
+    EmployeeContainerVue,
+    NoResult
   },
   
   props: ["search", "type"],
 
   data() {
     return {
-      results: []
+      results: [],
+      noResult: false
     };
   },
 
+  computed :{
+    emptyArray(){
+     if(this.results.length === 0){
+       return this.noResult = true;
+     }
+    }
+  },
   mounted () {
     axios
       .get('http://employeesearch.test/api/employees')
@@ -46,9 +57,8 @@ export default {
         this.filteredByLocation();
       } else if (this.type === "department") {
         this.filteredByDepartment();
-      } else {
-        return "Sorry no one by that " + this.Type
-      }   
+      }  
+
   },
 
 
