@@ -1,7 +1,6 @@
 import Search from './components/Search';
 import SearchResults from './components/SearchResults';
 import NotFound from './components/NotFound';
-import ResultsView from './components/ResultsView.vue';
 
 export default {
         mode: 'history',
@@ -20,11 +19,6 @@ export default {
             {
                 path: '/results',
                 component: SearchResults
-            },
-
-            {
-                path: '/results/*',
-                component: ResultsView
             }
 
 
